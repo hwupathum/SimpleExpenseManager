@@ -23,6 +23,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String KEY_AMOUNT = "amount";
     public static final String KEY_DATE = "date";
 
+    public static DatabaseHelper instance;
+
+    public static DatabaseHelper getInstance(Context context) {
+        if (instance == null) {
+            instance = new DatabaseHelper(context);
+        }
+        return instance;
+    };
 
     private static final String CREATE_ACCOUNTS_TABLE = "CREATE TABLE " + TABLE_ACCOUNTS + "("
             + KEY_ACCOUNT_NO + " TEXT PRIMARY KEY," + KEY_BANK_NAME + " TEXT,"
